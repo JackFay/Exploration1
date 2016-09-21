@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<h1>Sources</h1>
+<p>In this exploration, I used the following resources for learning material/guides:
+<ul>
+	<li><a href="https://technet.microsoft.com/en-us/library/hh994592(v=ws.11).aspx">Install IIS and 
+PHP</a></li>
+	<li><a href="http://www.vsysad.com/2012/04/setup-and-configure-smtp-server-on-windows-server-
+2008-r2/">Configure SMTP Server</a></li>
+	<li><a href="http://php.net/manual/en/function.mail.php">PHP mail() function</a></li>
+</ul>
+
+<h1>Code</h1>
+<p>I decided to explore around with PHP since it is a language I have never used before, but know it is 
+very popular. The form below will send an email to the inputted address, with the "comments" section of 
+the form being the body of the email.</p>
+
+<form id="form1" name="form1" method="post" action="email.php">
+	<label for="firstname">First Name</label>
+	<input type="text" name="firstname" id="firstname" />
+	<p>
+		<label for="lastname">Last Name</label>
+		<input type="text" name="lastname" id="lastname" />
+	</p>
+	<p>
+	<label for="email">Email</label>
+	<input type="text" name="email" id="email" />
+	</p>
+	<p>
+		<label for="comments">Comments</label>
+		<textarea name="comments" id="comments" cols="45" rows="5"></textarea>
+	</p>
+	<p>
+		<input type="submit" name="Submit" id="Submit" value="Submit" />
+	</p>
+</form>
+
+<h1>Recap</h1>
+<p>This exploration was much trickier than I thought it would be...It turns out that IIS isn't the 
+easiest to configure a SMTP Server with, and that it requires many workarounds to actually send an 
+email.
+
+I discovered that there are (unsurprisingly) many security issues behind setting up a successful email 
+server. This is due to the fact that using a function such as php's "mail()" allows one to easily change 
+the "from" header of an email. This means that it is possible to "fake" an email and make it appear like 
+it came from someone, whom in reality did not send it. 
+
+The article about configuring an SMTP Server in IIS details some of these security issues. I personally 
+was able to send a few emails, however, they only successfully sent to my gmail account and had warnings 
+from gmail saying that gmail "could not verify" the sender of the mail. I also noticed that the sending 
+of the email was very delayed. 
+
+Many email companies have realized the importance of verifying a sender, so in order to prevent a 
+warning message, I would have to file a "PTR Record" for reverse DNS lookups. A PTR Record essentially 
+allows your server's ip address to be traced back to your hostname. 
+
+Overall it was a very valuable learning experience, as I had to learn about/incorporate a variety of web 
+technologies.</p>
+
+</body>
+</html>
